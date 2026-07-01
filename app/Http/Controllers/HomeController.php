@@ -14,6 +14,20 @@ class HomeController extends Controller
         $categories = Category::all();
         $locations = Location::with('category')->get();
 
-        return view('welcome', compact('categories', 'locations'));
+        $stats = [
+            'total_locations' => Location::count(),
+            'total_categories' => Category::count(),
+            'total_umkm' => Location::whereHas('category', function($q) {
+                $q->where('name', 'like', '%UMKM%');
+            })->count() ?: 15 // Fallback dummy if 0
+        ];
+
+        return view('welcome', compact('categories', 'locations', 'stats'));
+    }
+
+    public function showLocation($id)
+    {
+        $location = Location::with('category')->findOrFail($id);
+        return view('location-detail', compact('location'));
     }
 }
