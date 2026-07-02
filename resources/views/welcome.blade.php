@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Profil Dusun Dawung Wetan</title>
+    <link rel="icon" type="image/jpeg" href="{{ asset('storage/logo.jpeg') }}?v={{ time() }}">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,7 +128,7 @@
             </h1>
             
             <p data-aos="fade-up" data-aos-delay="200" class="text-base md:text-lg lg:text-xl text-emerald-50 mb-10 leading-relaxed max-w-2xl font-medium">
-                Platform digital terpusat untuk menemukan UMKM lokal, destinasi wisata, fasilitas umum, dan potensi unggulan lainnya di Dusun Dawung Wetan.
+                Platform digital terpusat untuk menemukan UMKM lokal, fasilitas umum, dan potensi unggulan lainnya di Dusun Dawung Wetan.
             </p>
             
             <div data-aos="fade-up" data-aos-delay="300" class="flex flex-wrap items-center gap-4">
