@@ -19,7 +19,7 @@ class HomeController extends Controller
             'total_categories' => Category::count(),
             'total_umkm' => Location::whereHas('category', function($q) {
                 $q->where('name', 'like', '%UMKM%');
-            })->count() ?: 15 // Fallback dummy if 0
+            })->count()
         ];
 
         return view('welcome', compact('categories', 'locations', 'stats'));
