@@ -1,59 +1,98 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Web Profil & Potensi Desa
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi berbasis web ini dikembangkan menggunakan **Laravel 12** untuk memetakan dan menampilkan informasi terkait potensi desa, fasilitas umum, UMKM, dan infrastruktur lainnya. Aplikasi ini awalnya dikembangkan dalam rangka kegiatan Kuliah Kerja Nyata (KKN) untuk mendigitalisasi informasi profil Dusun/Desa (khususnya Dawung Wetan / Candi).
 
-## About Laravel
+## 🚀 Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Halaman Publik (Warga/Tamu):**
+  - Melihat daftar lokasi penting di desa (UMKM, Fasilitas Umum, Sekolah, dll).
+  - Detail informasi lokasi.
+- **Halaman Admin:**
+  - Login / Autentikasi Admin yang aman.
+  - **Manajemen Kategori:** Admin dapat menambahkan, mengedit, atau menghapus kategori tempat (misal: UMKM, Sekolah, Fashum).
+  - **Manajemen Lokasi:** Admin dapat mengelola data lokasi (menambah, mengubah koordinat/alamat, menghapus data).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Teknologi yang Digunakan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Backend:** Laravel (PHP 8.2+)
+- **Frontend:** Blade Templating, Tailwind CSS (via Vite)
+- **Database:** SQLite (mudah di-setup, tanpa perlu install server database eksternal)
 
-## Learning Laravel
+## 📋 Prasyarat Sistem
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Sebelum menjalankan proyek ini di komputer Anda, pastikan Anda telah menginstal:
+- [PHP](https://www.php.net/) (minimal versi 8.2)
+- [Composer](https://getcomposer.org/)
+- [Node.js & NPM](https://nodejs.org/)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ⚙️ Panduan Instalasi & Menjalankan Aplikasi
 
-## Laravel Sponsors
+Ikuti langkah-langkah berikut untuk menjalankan aplikasi ini secara lokal di komputer Anda:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. **Buka Terminal / Command Prompt** dan arahkan ke direktori proyek ini.
+2. **Instal dependensi PHP:**
+   ```bash
+   composer install
+   ```
+3. **Instal dependensi Frontend:**
+   ```bash
+   npm install
+   ```
+4. **Siapkan File Konfigurasi (Environment):**
+   Salin file `.env.example` menjadi `.env`. Di Windows, Anda bisa menggunakan perintah:
+   ```bash
+   copy .env.example .env
+   ```
+5. **Generate Application Key:**
+   ```bash
+   php artisan key:generate
+   ```
+6. **Siapkan Database SQLite:**
+   Pastikan file `database/database.sqlite` sudah ada. Jika belum, Anda bisa membuatnya secara manual (file kosong) atau aplikasi akan mencoba membuatnya otomatis.
+   Ubah konfigurasi di file `.env` bagian database menjadi seperti ini:
+   ```env
+   DB_CONNECTION=sqlite
+   # Hapus DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD
+   ```
+7. **Jalankan Migrasi dan Seeder (Untuk Data Awal):**
+   ```bash
+   php artisan migrate:fresh --seed
+   ```
+8. **Jalankan Server Lokal:**
+   Jalankan perintah berikut di terminal pertama:
+   ```bash
+   php artisan serve
+   ```
+   *(Aplikasi backend akan berjalan di http://127.0.0.1:8000)*
+9. **Jalankan Vite untuk Aset Frontend:**
+   Buka terminal *baru* dan jalankan:
+   ```bash
+   npm run dev
+   ```
 
-### Premium Partners
+Aplikasi sekarang dapat diakses melalui browser Anda di tautan `http://127.0.0.1:8000`.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🔐 Kredensial Akses
 
-## Contributing
+Untuk mengakses halaman admin, Anda bisa login melalui `http://127.0.0.1:8000/login`.
+Pastikan Anda sudah menjalankan perintah *seeder* (`php artisan migrate:fresh --seed`). Kredensial default untuk login dapat dicek di file `database/seeders/DatabaseSeeder.php` atau `UserSeeder`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 🤝 Manajemen Database Tim (Penting!)
 
-## Code of Conduct
+File `database/database.sqlite` **TIDAK BOLEH** dimasukkan ke dalam Git (pastikan sudah ada di dalam `.gitignore`). 
+Jika Anda atau teman Anda ingin menambahkan data lokasi atau kategori baru agar bisa digunakan bersama, **jangan menginputnya secara manual di halaman Admin lalu membagikan file `.sqlite`**. 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Cara yang benar untuk kolaborasi data:
+1. Tambahkan data lokasi/kategori baru di dalam file `database/seeders/LocationSeeder.php`.
+2. Lakukan *commit* dan *push* perubahan pada file seeder tersebut ke Git.
+3. Anggota tim lain cukup melakukan `git pull` dan menjalankan `php artisan migrate:fresh --seed` untuk mendapatkan pembaruan data yang sama tanpa risiko *file corrupt* atau *merge conflict*.
 
-## Security Vulnerabilities
+## 📂 Struktur Direktori Penting
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- `app/Models/` : Berisi model database seperti `User`, `Category`, dan `Location`.
+- `app/Http/Controllers/` : Berisi logika bisnis (Controller) untuk halaman utama dan admin.
+- `resources/views/` : File tampilan antarmuka (UI) menggunakan Blade.
+- `database/` : File konfigurasi database, migration, dan seeder.
 
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+*Dibuat untuk keperluan pendataan dan pemetaan wilayah Desa / Dusun.*
