@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         // Buat 1 akun Admin
         User::updateOrCreate(
-            ['email' => 'admin@desa.com'],
+            ['username' => 'admin'],
             [
-                'name' => 'Admin',
-                'password' => bcrypt('password'),
+                'name' => 'Admin Dawung Wetan',
+                'password' => bcrypt('admin'),
             ]
         );
 

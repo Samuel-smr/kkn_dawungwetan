@@ -49,10 +49,10 @@
                 @csrf
                 
                 <div>
-                    <label class="block text-[#1a4d33] text-sm font-bold mb-2" for="email">Email Admin</label>
-                    <input type="email" name="email" id="email" required autofocus
+                    <label class="block text-[#1a4d33] text-sm font-bold mb-2" for="username">Username Admin</label>
+                    <input type="text" name="username" id="username" required autofocus
                         class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#deaf65] focus:ring-2 focus:ring-[#deaf65]/20 outline-none transition-all text-[#1a4d33] bg-[#fbfaf5]" 
-                        placeholder="admin@dawungwetan.com">
+                        placeholder="admin">
                 </div>
 
                 <div>
