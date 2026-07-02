@@ -47,6 +47,15 @@
             background: #a3b8af; 
         }
 
+        /* Hide scrollbar for gallery slider */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
         /* Custom Checkbox style */
         .custom-checkbox {
             accent-color: #246343;
@@ -273,25 +282,38 @@
                 <p class="mt-4 text-emerald-800/80 font-medium">Potret kehidupan dan keindahan Dusun Dawung Wetan.</p>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="col-span-2 row-span-2 relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1518420658392-7f72297ea4f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Galeri 1" class="w-full h-full object-cover aspect-square md:aspect-auto group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <span class="text-white font-bold tracking-wide">Pemandangan Alam</span>
+            <div class="relative w-full px-2 lg:px-0">
+                <!-- Tombol Kiri -->
+                <button id="slideLeftBtn" class="absolute left-0 lg:-left-6 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-[#1a4d33] w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-110 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+
+                <!-- Kontainer Scroll -->
+                <div id="galleryContainer" class="flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6 pt-2">
+                    <div class="flex-none w-[85%] md:w-[60%] lg:w-[45%] snap-center relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1518420658392-7f72297ea4f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Galeri 1" class="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <span class="text-white font-bold tracking-wide">Pemandangan Alam</span>
+                        </div>
+                    </div>
+                    <div class="flex-none w-[85%] md:w-[45%] lg:w-[35%] snap-center relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1596700673415-46ff8dbb9679?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 2" class="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="flex-none w-[85%] md:w-[45%] lg:w-[35%] snap-center relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="https://images.unsplash.com/photo-1601614216833-289b4fdbbf35?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 3" class="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="flex-none w-[85%] md:w-[45%] lg:w-[35%] snap-center relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="https://images.unsplash.com/photo-1540960010996-039c9f0c2bd5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 4" class="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="flex-none w-[85%] md:w-[45%] lg:w-[35%] snap-center relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="500">
+                        <img src="https://images.unsplash.com/photo-1606821217579-2ef43f60e909?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 5" class="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                 </div>
-                <div class="relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1596700673415-46ff8dbb9679?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 2" class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1601614216833-289b4fdbbf35?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 3" class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="400">
-                    <img src="https://images.unsplash.com/photo-1540960010996-039c9f0c2bd5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 4" class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-500">
-                </div>
-                <div class="relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="500">
-                    <img src="https://images.unsplash.com/photo-1606821217579-2ef43f60e909?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 5" class="w-full h-full object-cover aspect-square group-hover:scale-110 transition-transform duration-500">
-                </div>
+
+                <!-- Tombol Kanan -->
+                <button id="slideRightBtn" class="absolute right-0 lg:-right-6 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-[#1a4d33] w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-110 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
             </div>
         </div>
     </section>
@@ -467,10 +489,11 @@
                     });
                 }
             });
-
             if (bounds.length > 0) {
                 map.fitBounds(bounds, { padding: [50, 50] });
             }
+
+
 
             // Checkbox Filtering Logic
             const checkboxes = document.querySelectorAll('.category-checkbox');
@@ -576,6 +599,21 @@
                     link.addEventListener('click', () => {
                         mobileMenu.classList.add('hidden');
                     });
+                });
+            }
+
+            // Gallery Slider Logic
+            const galleryContainer = document.getElementById('galleryContainer');
+            const slideLeftBtn = document.getElementById('slideLeftBtn');
+            const slideRightBtn = document.getElementById('slideRightBtn');
+
+            if (galleryContainer && slideLeftBtn && slideRightBtn) {
+                slideLeftBtn.addEventListener('click', () => {
+                    galleryContainer.scrollBy({ left: -window.innerWidth * 0.5, behavior: 'smooth' });
+                });
+                
+                slideRightBtn.addEventListener('click', () => {
+                    galleryContainer.scrollBy({ left: window.innerWidth * 0.5, behavior: 'smooth' });
                 });
             }
         });
