@@ -42,7 +42,7 @@
 
     <main class="max-w-3xl mx-auto py-8 sm:px-6 lg:px-8">
         <div class="px-4 py-6 sm:px-0">
-            <div class="mb-8 flex items-center justify-between">
+            <div class="mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <h2 class="text-3xl font-extrabold text-[#1a4d33] tracking-tight">Tambah Kategori Baru</h2>
                 <a href="{{ route('admin.categories.index') }}" class="text-amber-600 hover:text-amber-800 font-medium transition-colors border border-amber-200 px-4 py-2 rounded-xl hover:bg-[#fbfaf5]">Batal</a>
             </div>

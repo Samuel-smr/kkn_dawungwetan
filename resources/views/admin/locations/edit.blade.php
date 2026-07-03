@@ -43,7 +43,7 @@
 
     <main class="max-w-3xl mx-auto py-8 sm:px-6 lg:px-8">
         <div class="px-4 py-6 sm:px-0">
-            <div class="mb-8 flex items-center justify-between">
+            <div class="mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                     <h2 class="text-3xl font-extrabold text-[#1a4d33] tracking-tight">Edit Lokasi</h2>
                     <p class="text-[#246343] mt-1 font-medium">{{ $location->name }}</p>

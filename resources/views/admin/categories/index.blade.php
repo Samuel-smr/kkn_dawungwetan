@@ -44,12 +44,12 @@
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8">
         <div class="px-4 py-6 sm:px-0">
-            <div class="flex justify-between items-center mb-8">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                 <div>
                     <h2 class="text-3xl font-extrabold text-[#1a4d33] tracking-tight">Kelola Kategori</h2>
                     <p class="text-[#246343] mt-1">Daftar semua kategori pemetaan di desa.</p>
                 </div>
-                <a href="{{ route('admin.categories.create') }}" class="bg-gradient-to-r from-[#1e583f] to-[#246343] hover:from-[#1a4d33] hover:to-[#1e583f] text-white font-bold py-2.5 px-5 rounded-xl shadow-sm hover:shadow-md transition-all">
+                <a href="{{ route('admin.categories.create') }}" class="bg-gradient-to-r from-[#1e583f] to-[#246343] hover:from-[#1a4d33] hover:to-[#1e583f] text-white font-bold py-2.5 px-5 rounded-xl shadow-sm hover:shadow-md transition-all whitespace-nowrap">
                     + Tambah Kategori
                 </a>
             </div>
@@ -61,42 +61,44 @@
             @endif
 
             <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-                <table class="min-w-full divide-y divide-emerald-100">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">No</th>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Nama Kategori</th>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Warna Peta</th>
-                            <th scope="col" class="px-6 py-4 text-right text-xs font-bold text-[#1e583f] uppercase tracking-wider">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-emerald-50">
-                        @forelse($categories as $index => $category)
-                            <tr class="hover:bg-[#fbfaf5]/30 transition-colors">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#1e583f]/60">{{ $index + 1 }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-[#1a4d33]">{{ $category->name }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-6 h-6 rounded-full shadow-inner border border-gray-200" style="background-color: {{ $category->color }};"></div>
-                                        <span class="text-[#246343] font-mono text-xs">{{ $category->color }}</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-bold">
-                                    <a href="{{ route('admin.categories.edit', $category->id) }}" class="text-amber-600 hover:text-amber-800 mr-4 transition-colors">Edit</a>
-                                    <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus kategori ini? (Lokasi terkait tidak akan terhapus, tapi kategorinya menjadi kosong)');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-500 hover:text-red-700 transition-colors">Hapus</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @empty
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-emerald-100">
+                        <thead class="bg-gray-50">
                             <tr>
-                                <td colspan="4" class="px-6 py-8 whitespace-nowrap text-sm text-center text-[#246343] font-medium">Belum ada data kategori.</td>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">No</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Nama Kategori</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Warna Peta</th>
+                                <th scope="col" class="px-6 py-4 text-right text-xs font-bold text-[#1e583f] uppercase tracking-wider">Aksi</th>
                             </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-emerald-50">
+                            @forelse($categories as $index => $category)
+                                <tr class="hover:bg-[#fbfaf5]/30 transition-colors">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#1e583f]/60">{{ $index + 1 }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-[#1a4d33]">{{ $category->name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-6 h-6 rounded-full shadow-inner border border-gray-200" style="background-color: {{ $category->color }};"></div>
+                                            <span class="text-[#246343] font-mono text-xs">{{ $category->color }}</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-bold">
+                                        <a href="{{ route('admin.categories.edit', $category->id) }}" class="text-amber-600 hover:text-amber-800 mr-4 transition-colors">Edit</a>
+                                        <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus kategori ini? (Lokasi terkait tidak akan terhapus, tapi kategorinya menjadi kosong)');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-red-500 hover:text-red-700 transition-colors">Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="px-6 py-8 whitespace-nowrap text-sm text-center text-[#246343] font-medium">Belum ada data kategori.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
             
             <div class="mt-8">

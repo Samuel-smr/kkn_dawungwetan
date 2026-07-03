@@ -44,12 +44,12 @@
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8">
         <div class="px-4 py-6 sm:px-0">
-            <div class="flex justify-between items-center mb-8">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                 <div>
                     <h2 class="text-3xl font-extrabold text-[#1a4d33] tracking-tight">Kelola Lokasi</h2>
                     <p class="text-[#246343] mt-1">Daftar semua titik pemetaan di desa.</p>
                 </div>
-                <a href="{{ route('admin.locations.create') }}" class="bg-gradient-to-r from-[#1e583f] to-[#246343] hover:from-[#1a4d33] hover:to-[#1e583f] text-white font-bold py-2.5 px-5 rounded-xl shadow-sm hover:shadow-md transition-all">
+                <a href="{{ route('admin.locations.create') }}" class="bg-gradient-to-r from-[#1e583f] to-[#246343] hover:from-[#1a4d33] hover:to-[#1e583f] text-white font-bold py-2.5 px-5 rounded-xl shadow-sm hover:shadow-md transition-all whitespace-nowrap">
                     + Tambah Lokasi
                 </a>
             </div>
@@ -61,51 +61,53 @@
             @endif
 
             <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-                <table class="min-w-full divide-y divide-emerald-100">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">No</th>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Foto</th>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Nama Lokasi</th>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Kategori</th>
-                            <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Alamat</th>
-                            <th scope="col" class="px-6 py-4 text-right text-xs font-bold text-[#1e583f] uppercase tracking-wider">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-emerald-50">
-                        @forelse($locations as $index => $location)
-                            <tr class="hover:bg-[#fbfaf5]/30 transition-colors">
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#1e583f]/60">{{ $index + 1 }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    @if($location->image)
-                                        <img src="{{ asset('storage/' . $location->image) }}" alt="Foto" class="h-12 w-12 rounded-lg object-cover shadow-sm border border-gray-100">
-                                    @else
-                                        <div class="h-12 w-12 rounded-lg bg-[#f0f9f4] border border-gray-200 flex items-center justify-center text-emerald-400 text-xs italic">Kosong</div>
-                                    @endif
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-[#1a4d33]">{{ $location->name }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                    <span class="px-3 py-1 inline-flex text-xs leading-5 font-bold rounded-full bg-amber-100 text-[#1a4d33] border border-amber-200">
-                                        {{ $location->category->name ?? '-' }}
-                                    </span>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-[#246343] truncate max-w-xs font-medium">{{ $location->address }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-bold">
-                                    <a href="{{ route('admin.locations.edit', $location->id) }}" class="text-amber-600 hover:text-amber-800 mr-4 transition-colors">Edit</a>
-                                    <form action="{{ route('admin.locations.destroy', $location->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus lokasi ini?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-500 hover:text-red-700 transition-colors">Hapus</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @empty
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-emerald-100">
+                        <thead class="bg-gray-50">
                             <tr>
-                                <td colspan="6" class="px-6 py-8 whitespace-nowrap text-sm text-center text-[#246343] font-medium">Belum ada data lokasi.</td>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">No</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Foto</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Nama Lokasi</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Kategori</th>
+                                <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#1e583f] uppercase tracking-wider">Alamat</th>
+                                <th scope="col" class="px-6 py-4 text-right text-xs font-bold text-[#1e583f] uppercase tracking-wider">Aksi</th>
                             </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-emerald-50">
+                            @forelse($locations as $index => $location)
+                                <tr class="hover:bg-[#fbfaf5]/30 transition-colors">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#1e583f]/60">{{ $index + 1 }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @if($location->image)
+                                            <img src="{{ asset('storage/' . $location->image) }}" alt="Foto" class="h-12 w-12 rounded-lg object-cover shadow-sm border border-gray-100">
+                                        @else
+                                            <div class="h-12 w-12 rounded-lg bg-[#f0f9f4] border border-gray-200 flex items-center justify-center text-emerald-400 text-xs italic">Kosong</div>
+                                        @endif
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-[#1a4d33]">{{ $location->name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                        <span class="px-3 py-1 inline-flex text-xs leading-5 font-bold rounded-full bg-amber-100 text-[#1a4d33] border border-amber-200">
+                                            {{ $location->category->name ?? '-' }}
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-[#246343] truncate max-w-xs font-medium">{{ $location->address }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-bold">
+                                        <a href="{{ route('admin.locations.edit', $location->id) }}" class="text-amber-600 hover:text-amber-800 mr-4 transition-colors">Edit</a>
+                                        <form action="{{ route('admin.locations.destroy', $location->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Yakin ingin menghapus lokasi ini?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-red-500 hover:text-red-700 transition-colors">Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="px-6 py-8 whitespace-nowrap text-sm text-center text-[#246343] font-medium">Belum ada data lokasi.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
             
             <div class="mt-8">
