@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     protected $fillable = [
-        'category_id', 'name', 'description', 'address', 'latitude', 'longitude', 'image'
+        'category_id', 'name', 'description', 'address', 'phone', 'latitude', 'longitude', 'image'
     ];
 
     public function category()

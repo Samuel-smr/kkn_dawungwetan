@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin - Profil Desa Dawung Wetan</title>
+    <title>Profil Admin - Profil Desa Dawung Wetan</title>
     <link rel="icon" type="image/jpeg" href="{{ asset('storage/logo.jpeg') }}?v={{ time() }}">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,7 @@
 </head>
 <body class="bg-[#fbfaf5] min-h-screen">
     
-        <!-- Navbar -->
+    <!-- Navbar -->
     <nav class="bg-[#1e583f] shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -44,42 +44,46 @@
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8">
         <div class="px-4 py-6 sm:px-0">
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8">
-                <h2 class="text-3xl font-extrabold mb-4 text-[#1a4d33] tracking-tight">Selamat Datang di Dashboard!</h2>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 max-w-2xl mx-auto">
+                <h2 class="text-3xl font-extrabold mb-2 text-[#1a4d33] tracking-tight">Profil & Ganti Password</h2>
+                <p class="text-gray-500 mb-8">Ubah password akun admin Anda di bawah ini.</p>
                 
+                @if (session('success'))
+                    <div class="bg-emerald-50 border-l-4 border-emerald-500 text-emerald-700 p-4 mb-6 rounded-r-lg" role="alert">
+                        <p class="font-medium">{{ session('success') }}</p>
+                    </div>
+                @endif
                 
-                <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Kelola Lokasi Card -->
-                    <div class="bg-gradient-to-br from-emerald-50 to-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow group">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-xl border border-gray-100 group-hover:scale-110 transition-transform">
-                            📍
-                        </div>
-                        <h3 class="font-bold text-[#1a4d33] text-xl mb-2">Kelola Lokasi</h3>
-                        <p class="text-[#246343] text-sm mb-6 leading-relaxed">Tambahkan atau perbarui titik lokasi fasilitas umum dan UMKM di desa.</p>
-                        <a href="{{ route('admin.locations.index') }}" class="inline-block bg-gradient-to-r from-[#1e583f] to-[#246343] text-white px-5 py-2.5 rounded-xl font-semibold shadow-sm hover:shadow-md hover:from-[#1a4d33] hover:to-[#1e583f] transition-all">
-                            Kelola Sekarang &rarr;
-                        </a>
+                <form action="{{ route('admin.password.update') }}" method="POST">
+                    @csrf
+                    
+                    <div class="mb-6">
+                        <label for="username" class="block text-sm font-bold text-gray-700 mb-2">Username</label>
+                        <input type="text" name="username" id="username" value="{{ old('username', Auth::user()->username) }}" class="w-full px-4 py-3 rounded-xl border {{ $errors->has('username') ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-200 focus:ring-[#377b5a] focus:border-[#377b5a]' }} transition-colors" required>
+                        @error('username')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    <!-- Kelola Kategori Card -->
-                    <div class="bg-gradient-to-br from-amber-50 to-white p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow group">
-                        <div class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center mb-6 text-xl border border-gray-100 group-hover:scale-110 transition-transform">
-                            📑
-                        </div>
-                        <h3 class="font-bold text-[#1a4d33] text-xl mb-2">Kelola Kategori</h3>
-                        <p class="text-[#246343] text-sm mb-6 leading-relaxed">Atur kategori beserta warnanya untuk klasifikasi pemetaan lokasi desa.</p>
-                        <a href="{{ route('admin.categories.index') }}" class="inline-block bg-gradient-to-r from-[#deaf65] to-[#c99a53] text-white px-5 py-2.5 rounded-xl font-semibold shadow-sm hover:shadow-md hover:from-[#c99a53] hover:to-[#b38541] transition-all">
-                            Kelola Kategori &rarr;
-                        </a>
+                    <div class="mb-6">
+                        <label for="password" class="block text-sm font-bold text-gray-700 mb-2">Password Baru <span class="text-gray-400 font-normal">(opsional, isi jika ingin diganti)</span></label>
+                        <input type="password" name="password" id="password" class="w-full px-4 py-3 rounded-xl border {{ $errors->has('password') ? 'border-red-300 focus:ring-red-500 focus:border-red-500' : 'border-gray-200 focus:ring-[#377b5a] focus:border-[#377b5a]' }} transition-colors">
+                        @error('password')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
-                </div>
-                
-                <div class="mt-12 pt-6 border-t border-gray-100">
-                    <a href="{{ route('home') }}" target="_blank" class="inline-flex items-center text-[#246343] hover:text-[#1e583f] font-semibold transition-colors">
-                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                        Lihat Website Depan
-                    </a>
-                </div>
+
+                    <div class="mb-8">
+                        <label for="password_confirmation" class="block text-sm font-bold text-gray-700 mb-2">Konfirmasi Password Baru</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-[#377b5a] focus:border-[#377b5a] transition-colors">
+                    </div>
+
+                    <div class="flex items-center justify-end">
+                        <button type="submit" class="bg-[#1e583f] hover:bg-[#1a4d33] text-white font-bold py-3 px-6 rounded-xl shadow-sm transition-colors">
+                            Simpan Perubahan
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </main>

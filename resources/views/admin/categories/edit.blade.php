@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Kategori - Admin Profil Desa</title>
+    <link rel="icon" type="image/jpeg" href="{{ asset('storage/logo.jpeg') }}?v={{ time() }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,21 +15,26 @@
 </head>
 <body class="bg-[#fbfaf5] min-h-screen">
     
-    <!-- Navbar -->
-    <nav class="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
+        <!-- Navbar -->
+    <nav class="bg-[#1e583f] shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center gap-6">
-                    <a href="{{ route('dashboard') }}" class="text-xl font-extrabold text-[#1a4d33] tracking-tight hover:text-[#246343] transition-colors">Dawung Wetan <span class="text-[#246343]">Admin</span></a>
+                    <a href="{{ route('dashboard') }}" class="text-xl font-extrabold text-white tracking-tight hover:text-[#deaf65] transition-colors">Dawung Wetan <span class="text-[#deaf65]">Admin</span></a>
                     
-                    <div class="hidden md:flex space-x-4">
-                        <a href="{{ route('dashboard') }}" class="text-[#246343] hover:text-[#1a4d33] px-3 py-2 text-sm font-semibold transition-colors">Dashboard</a>
-                        <a href="{{ route('admin.locations.index') }}" class="text-[#246343] hover:text-[#1a4d33] px-3 py-2 text-sm font-semibold transition-colors">Lokasi</a>
-                        <a href="{{ route('admin.categories.index') }}" class="text-[#1a4d33] border-b-2 border-emerald-600 px-3 py-2 text-sm font-bold transition-colors">Kategori</a>
+                    <div class="hidden md:flex space-x-1 items-center h-full pt-1">
+                        <a href="{{ route('dashboard') }}" class="{{ request()->routeIs('dashboard') ? 'text-white border-b-2 border-[#deaf65]' : 'text-emerald-100/80 hover:text-white hover:bg-white/10 rounded-t-sm' }} px-3 py-2 text-sm font-semibold transition-colors h-full flex items-center">Dashboard</a>
+                        <a href="{{ route('admin.locations.index') }}" class="{{ request()->routeIs('admin.locations.*') ? 'text-white border-b-2 border-[#deaf65]' : 'text-emerald-100/80 hover:text-white hover:bg-white/10 rounded-t-sm' }} px-3 py-2 text-sm font-semibold transition-colors h-full flex items-center">Lokasi</a>
+                        <a href="{{ route('admin.categories.index') }}" class="{{ request()->routeIs('admin.categories.*') ? 'text-white border-b-2 border-[#deaf65]' : 'text-emerald-100/80 hover:text-white hover:bg-white/10 rounded-t-sm' }} px-3 py-2 text-sm font-semibold transition-colors h-full flex items-center">Kategori</a>
+                        <a href="{{ route('admin.profile') }}" class="{{ request()->routeIs('admin.profile') ? 'text-white border-b-2 border-[#deaf65]' : 'text-emerald-100/80 hover:text-white hover:bg-white/10 rounded-t-sm' }} px-3 py-2 text-sm font-semibold transition-colors h-full flex items-center">Profil</a>
                     </div>
                 </div>
                 <div class="flex items-center">
-                    <span class="text-[#246343] font-medium mr-6">Halo, {{ Auth::user()->name ?? 'Admin' }}</span>
+                    <span class="text-emerald-100/90 font-medium mr-6">Halo, {{ Auth::user()->username ?? 'Admin' }}</span>
+                    <form method="POST" action="{{ route('logout') }}" class="m-0">
+                        @csrf
+                        <button type="submit" class="text-[#ff8a8a] hover:text-[#ffb3b3] font-semibold px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors">Logout</button>
+                    </form>
                 </div>
             </div>
         </div>

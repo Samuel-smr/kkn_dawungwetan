@@ -21,6 +21,10 @@ Route::middleware('auth')->group(function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
+    // Admin Profile
+    Route::get('/admin/profile', [AuthController::class, 'profile'])->name('admin.profile');
+    Route::post('/admin/profile/password', [AuthController::class, 'updatePassword'])->name('admin.password.update');
+
     // Admin Locations CRUD
     Route::resource('admin/locations', \App\Http\Controllers\Admin\LocationController::class)->names('admin.locations');
 

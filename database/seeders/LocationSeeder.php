@@ -18,60 +18,87 @@ class LocationSeeder extends Seeder
         $catFashum = Category::updateOrCreate(['slug' => 'fashum'], ['name' => 'Fasilitas Umum', 'color' => '#f59e0b']); // Yellow
         $catSekolah = Category::updateOrCreate(['slug' => 'sekolah'], ['name' => 'Sekolah', 'color' => '#3b82f6']); // Blue
 
-        // Data Lokasi
-        Location::updateOrCreate(
-            ['name' => 'SDN Candi IV'],
+        // Data Lokasi (dari database terkini)
+        $locations = [
             [
+                'name' => 'SDN Candi IV',
                 'category_id' => $catSekolah->id,
                 'description' => '-',
-                'address' => 'Q288+Q4G, Dawung Lor, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur 63552',
+                'address' => 'Dawung Wetan, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur 63552',
                 'latitude' => -8.233041741328188,
                 'longitude' => 111.01531788059648,
-            ]
-        );
-
-        Location::updateOrCreate(
-            ['name' => 'Masjid Mujahiddin Aminah'],
+            ],
             [
+                'name' => 'Masjid Mujahiddin Aminah',
                 'category_id' => $catFashum->id,
                 'description' => '-',
-                'address' => 'Q288+J54, Dawung Lor, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur 63552',
+                'address' => 'Dawung Wetan, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur 63552',
                 'latitude' => -8.23411586385848,
                 'longitude' => 111.01497492496584,
-            ]
-        );
-
-        Location::updateOrCreate(
-            ['name' => 'Toko bu Ari'],
+            ],
             [
+                'name' => 'Toko bu Ari',
                 'category_id' => $catUmkm->id,
                 'description' => '-',
-                'address' => 'Q288+H5G, Dawung Lor, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur 63552',
+                'address' => 'Dawung Wetan, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur 63552',
                 'latitude' => -8.23352529888959,
                 'longitude' => 111.01546559805888,
-            ]
-        );
-
-        Location::updateOrCreate(
-            ['name' => 'Balai Dusun Dawung Wetan'],
+            ],
             [
+                'name' => 'Balai Dusun Dawung Wetan',
                 'category_id' => $catFashum->id,
                 'description' => '-',
-                'address' => 'Dawung Lor, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur',
+                'address' => 'Dawung Wetan, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur',
                 'latitude' => -8.233416796869827,
                 'longitude' => 111.01531587915024,
-            ]
-        );
-
-        Location::updateOrCreate(
-            ['name' => 'Keripik Singkong Mbak Neni'],
+            ],
             [
+                'name' => 'Keripik Singkong Mbak Neni',
                 'category_id' => $catUmkm->id,
                 'description' => '-',
                 'address' => 'Dawung Wetan, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur 63552',
                 'latitude' => -8.233198164024953,
                 'longitude' => 111.01461092022528,
-            ]
-        );
+            ],
+            [
+                'name' => 'Peyek Ibu Anik',
+                'category_id' => $catUmkm->id,
+                'description' => '-',
+                'address' => 'Dawung Wetan, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur 63552',
+                'latitude' => -8.2364887167366,
+                'longitude' => 111.01513548708488,
+            ],
+            [
+                'name' => 'Ridho Jati',
+                'category_id' => $catUmkm->id,
+                'description' => '-',
+                'address' => 'Dawung Wetan, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur 63552',
+                'latitude' => -8.233903817252823,
+                'longitude' => 111.01393954812106,
+            ],
+            [
+                'name' => 'Toko Kelontong Feby',
+                'category_id' => $catUmkm->id,
+                'description' => '-',
+                'address' => 'Dawung Wetan, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur 63552',
+                'latitude' => -8.234690759613928,
+                'longitude' => 111.01429185256688,
+            ],
+            [
+                'name' => 'Lapangan voli Dawung Wetan',
+                'category_id' => $catUmkm->id,
+                'description' => '-',
+                'address' => 'Dawung Wetan, Candi, Kec. Pringkuku, Kabupaten Pacitan, Jawa Timur 63552',
+                'latitude' => -8.234492436028678,
+                'longitude' => 111.01381738070287,
+            ],
+        ];
+
+        foreach ($locations as $location) {
+            Location::updateOrCreate(
+                ['name' => $location['name']],
+                $location
+            );
+        }
     }
 }

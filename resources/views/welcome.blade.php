@@ -72,25 +72,27 @@
     <nav class="fixed w-full z-50 bg-[#1e583f] transition-all duration-300 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-3">
-                    <div class="w-8 h-8 bg-[#377b5a] rounded-lg flex items-center justify-center shadow-inner">
-                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="font-extrabold text-lg text-white leading-tight">DAWUNG WETAN</span>
-                        <span class="text-[10px] text-emerald-100/70 font-medium tracking-wide">Sistem Informasi Potensi Dusun</span>
-                    </div>
-                </div>
+                <div class="flex items-center gap-8">
+                    <!-- Logo -->
+                    <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center gap-3 hover:opacity-80 transition-opacity">
+                        <div class="w-8 h-8 bg-[#377b5a] rounded-lg flex items-center justify-center shadow-inner">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-extrabold text-lg text-white leading-tight">DAWUNG WETAN</span>
+                            <span class="text-[10px] text-emerald-100/70 font-medium tracking-wide">Sistem Informasi Potensi Dusun</span>
+                        </div>
+                    </a>
 
-                <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center space-x-1">
-                    <a href="#beranda" class="text-white hover:text-[#deaf65] px-3 py-2 text-sm font-semibold transition-colors">Beranda</a>
-                    <a href="#peta" class="text-white hover:text-[#deaf65] px-3 py-2 text-sm font-semibold transition-colors">Peta Interaktif</a>
-                    <a href="#profil" class="text-white hover:text-[#deaf65] px-3 py-2 text-sm font-semibold transition-colors">Profil Desa</a>
-                    <a href="#galeri" class="text-white hover:text-[#deaf65] px-3 py-2 text-sm font-semibold transition-colors">Galeri</a>
+                    <!-- Desktop Menu -->
+                    <div class="hidden lg:flex items-center space-x-2">
+                        <a href="#beranda" class="text-white hover:text-[#deaf65] px-3 py-2 text-sm font-semibold transition-colors">Beranda</a>
+                        <a href="#peta" class="text-white hover:text-[#deaf65] px-3 py-2 text-sm font-semibold transition-colors">Peta Interaktif</a>
+                        <a href="#profil" class="text-white hover:text-[#deaf65] px-3 py-2 text-sm font-semibold transition-colors">Profil Desa</a>
+                        <a href="#galeri" class="text-white hover:text-[#deaf65] px-3 py-2 text-sm font-semibold transition-colors">Galeri</a>
+                    </div>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -280,7 +282,7 @@
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-[#1a4d33] tracking-tight">Galeri Dokumentasi</h2>
                 <div class="w-24 h-1.5 bg-[#deaf65] mx-auto mt-4 rounded-full"></div>
-                <p class="mt-4 text-emerald-800/80 font-medium">Potret kehidupan dan keindahan Dusun Dawung Wetan.</p>
+                <p class="mt-4 text-emerald-800/80 font-medium"></p>
             </div>
             
             <div class="relative w-full px-2 lg:px-0">
@@ -289,26 +291,30 @@
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
 
+                <style>
+                    @media (min-width: 1024px) {
+                        .gallery-item {
+                            width: 48% !important;
+                        }
+                    }
+                </style>
                 <!-- Kontainer Scroll -->
                 <div id="galleryContainer" class="flex gap-4 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6 pt-2">
-                    <div class="flex-none w-[85%] md:w-[60%] lg:w-[45%] snap-center relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="100">
-                        <img src="https://images.unsplash.com/photo-1518420658392-7f72297ea4f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Galeri 1" class="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <span class="text-white font-bold tracking-wide">Pemandangan Alam</span>
+                    @forelse($locations->whereNotNull('image') as $index => $location)
+                    <a href="{{ route('location.show', $location->id) }}" class="gallery-item block flex-none w-[85%] md:w-[45%] aspect-[4/3] snap-center relative group overflow-hidden rounded-2xl shadow-sm bg-gray-100" data-aos="zoom-in" data-aos-delay="{{ 100 * (($index % 4) + 1) }}">
+                        <img src="{{ asset('storage/' . $location->image) }}" alt="{{ $location->name }}" class="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                            <span class="text-white font-bold tracking-wide">{{ $location->name }}</span>
+                            @if($location->category)
+                                <span class="text-emerald-300 text-sm font-medium mt-1">{{ $location->category->name }}</span>
+                            @endif
                         </div>
+                    </a>
+                    @empty
+                    <div class="w-full text-center py-8 text-gray-500">
+                        Belum ada foto dokumentasi lokasi.
                     </div>
-                    <div class="flex-none w-[85%] md:w-[45%] lg:w-[35%] snap-center relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="200">
-                        <img src="https://images.unsplash.com/photo-1596700673415-46ff8dbb9679?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 2" class="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="flex-none w-[85%] md:w-[45%] lg:w-[35%] snap-center relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="300">
-                        <img src="https://images.unsplash.com/photo-1601614216833-289b4fdbbf35?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 3" class="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="flex-none w-[85%] md:w-[45%] lg:w-[35%] snap-center relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="400">
-                        <img src="https://images.unsplash.com/photo-1540960010996-039c9f0c2bd5?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 4" class="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
-                    <div class="flex-none w-[85%] md:w-[45%] lg:w-[35%] snap-center relative group overflow-hidden rounded-2xl shadow-sm" data-aos="zoom-in" data-aos-delay="500">
-                        <img src="https://images.unsplash.com/photo-1606821217579-2ef43f60e909?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Galeri 5" class="w-full h-[300px] md:h-[400px] object-cover group-hover:scale-110 transition-transform duration-500">
-                    </div>
+                    @endforelse
                 </div>
 
                 <!-- Tombol Kanan -->
@@ -608,16 +614,37 @@
             const slideLeftBtn = document.getElementById('slideLeftBtn');
             const slideRightBtn = document.getElementById('slideRightBtn');
 
-            if (galleryContainer && slideLeftBtn && slideRightBtn) {
-                slideLeftBtn.addEventListener('click', () => {
-                    galleryContainer.scrollBy({ left: -window.innerWidth * 0.5, behavior: 'smooth' });
-                });
+            if (galleryContainer) {
+                const slideAmount = window.innerWidth > 1024 ? galleryContainer.clientWidth * 0.5 : galleryContainer.clientWidth * 0.9;
                 
-                slideRightBtn.addEventListener('click', () => {
-                    galleryContainer.scrollBy({ left: window.innerWidth * 0.5, behavior: 'smooth' });
+                if (slideLeftBtn) {
+                    slideLeftBtn.addEventListener('click', () => {
+                        galleryContainer.scrollBy({ left: -slideAmount, behavior: 'smooth' });
+                    });
+                }
+                if (slideRightBtn) {
+                    slideRightBtn.addEventListener('click', () => {
+                        galleryContainer.scrollBy({ left: slideAmount, behavior: 'smooth' });
+                    });
+                }
+
+                // Auto slide logic
+                const autoSlide = () => {
+                    if (galleryContainer.scrollLeft + galleryContainer.clientWidth >= galleryContainer.scrollWidth - 20) {
+                        galleryContainer.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        galleryContainer.scrollBy({ left: slideAmount, behavior: 'smooth' });
+                    }
+                };
+                
+                let autoSlideInterval = setInterval(autoSlide, 3500);   
+
+                galleryContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+                galleryContainer.addEventListener('mouseleave', () => {
+                    autoSlideInterval = setInterval(autoSlide, 2500);
                 });
             }
         });
     </script>
 </body>
-</html>
+</html> 
