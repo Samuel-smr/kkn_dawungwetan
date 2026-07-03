@@ -241,7 +241,7 @@
     <section id="profil" class="py-24 bg-white border-y border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-[#1a4d33] tracking-tight">Sekilas Tentang Desa</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-[#1a4d33] tracking-tight">Kekayaan & Potensi Dusun</h2>
                 <div class="w-24 h-1.5 bg-[#deaf65] mx-auto mt-4 rounded-full"></div>
             </div>
             
@@ -249,28 +249,28 @@
                 <!-- Card 1 -->
                 <div data-aos="fade-up" data-aos-delay="100" class="bg-[#fbfaf5] rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
                     <div class="w-14 h-14 bg-[#246343] text-white rounded-xl flex items-center justify-center mb-6 text-2xl shadow-md">
-                        🌿
+                        🐐
                     </div>
-                    <h3 class="text-xl font-bold text-[#1a4d33] mb-3">Pesona Alam</h3>
-                    <p class="text-gray-600 leading-relaxed font-medium text-sm">Udara pegunungan yang segar dan pepohonan hijau yang rimbun memberikan kedamaian luar biasa bagi siapa saja.</p>
+                    <h3 class="text-xl font-bold text-[#1a4d33] mb-3">Hewan Ternak</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium text-sm">Masyarakat desa aktif berternak, dengan fokus utama pada peternakan kambing yang menjadi salah satu pendorong ekonomi warga.</p>
                 </div>
                 
                 <!-- Card 2 -->
                 <div data-aos="fade-up" data-aos-delay="200" class="bg-[#fbfaf5] rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
                     <div class="w-14 h-14 bg-[#deaf65] text-white rounded-xl flex items-center justify-center mb-6 text-2xl shadow-md">
-                        🏪
+                        🤝
                     </div>
-                    <h3 class="text-xl font-bold text-[#1a4d33] mb-3">Pusat Kreativitas</h3>
-                    <p class="text-gray-600 leading-relaxed font-medium text-sm">Kemandirian warga dalam menciptakan kerajinan dan kuliner lokal yang menggerakkan roda ekonomi desa.</p>
+                    <h3 class="text-xl font-bold text-[#1a4d33] mb-3">Budaya Gotong Royong</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium text-sm">Semangat kebersamaan dan kekeluargaan masih sangat kental, tercermin dalam budaya gotong royong yang selalu dijaga oleh seluruh warga.</p>
                 </div>
                 
                 <!-- Card 3 -->
                 <div data-aos="fade-up" data-aos-delay="300" class="bg-[#fbfaf5] rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
                     <div class="w-14 h-14 bg-[#246343] text-white rounded-xl flex items-center justify-center mb-6 text-2xl shadow-md">
-                        🏫
+                        🌴
                     </div>
-                    <h3 class="text-xl font-bold text-[#1a4d33] mb-3">Fasilitas Mumpuni</h3>
-                    <p class="text-gray-600 leading-relaxed font-medium text-sm">Layanan kesehatan dan pendidikan dasar yang tertata rapi sebagai penunjang utama kesejahteraan masyarakat.</p>
+                    <h3 class="text-xl font-bold text-[#1a4d33] mb-3">Hasil Bumi & Kayu</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium text-sm">Kelapa merupakan salah satu hasil kebun utama yang memiliki nilai ekonomi tinggi. komoditas perkebunan ini juga menghasilkan berbagai jenis kayu berkualitas seperti akasia, mahoni, jati, sengon laut atau albasia, serta gemelina yang sering dikenal sebagai jati jawa.</p>
                 </div>
             </div>
         </div>
